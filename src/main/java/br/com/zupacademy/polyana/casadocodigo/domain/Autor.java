@@ -26,6 +26,7 @@ public class Autor {
     @NotNull
     private LocalDateTime dataCadastro = LocalDateTime.now();
 
+    @Deprecated
     public Autor() {
     }
 
@@ -34,5 +35,4 @@ public class Autor {
         this.email = email;
         this.descricao = descricao;
     }
-
 }

@@ -8,11 +8,13 @@ import javax.validation.constraints.NotBlank;
 
 public class AutorRequest {
 
-    @NotBlank
+    @NotBlank(message = "Nome é um campo obrigatório")
     private String nome;
-    @NotBlank @Email
+    @NotBlank(message = "Email é um campo obrigatório")
+    @Email
     private String email;
-    @NotBlank @Length(max=400)
+    @NotBlank(message = "Descrição é um campo obrigatório")
+    @Length(max=400)
     private String descricao;
 
     public AutorRequest(String nome, String email, String descricao) {
@@ -21,16 +23,8 @@ public class AutorRequest {
         this.descricao = descricao;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
     public String getEmail() {
-        return email;
-    }
-
-    public String getDescricao() {
-        return descricao;
+        return this.email;
     }
 
     public Autor converter() {
