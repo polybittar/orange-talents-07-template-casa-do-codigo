@@ -21,8 +21,8 @@ public class AutorController {
     @Autowired
     private EmailDuplicadoValidator emailDuplicadoValidator;
 
-    @InitBinder
-    public void init(WebDataBinder binder){
+    @InitBinder //colocar validações custumizadas
+    public void init(WebDataBinder binder){  //utilizado quando um request é feito para fazer config adicionais
         binder.addValidators(emailDuplicadoValidator);
     }
 

@@ -1,22 +1,31 @@
 package br.com.zupacademy.polyana.casadocodigo.validator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ErroDeFormularioDTO {
-	
-	private String campo;
-	private String erro;
-	
-	
-	public ErroDeFormularioDTO(String campo, String erro) {
-		super();
-		this.campo = campo;
-		this.erro = erro;
+
+	private List<String> globalErrorMessages = new ArrayList<>();
+	private List<ErroDeCampoSaidaDto> fieldErrors = new ArrayList<>();
+
+	public void addError(String message) {
+		globalErrorMessages.add(message);
 	}
-	
-	public String getCampo() {
-		return campo;
+
+	public void addFieldError(String field, String message) {
+		ErroDeCampoSaidaDto fieldError = new ErroDeCampoSaidaDto(field, message);
+		fieldErrors.add(fieldError);
 	}
-	public String getErro() {
-		return erro;
+
+	public List<String> getGlobalErrorMessages() {
+		return globalErrorMessages;
 	}
-	
+
+	public List<ErroDeCampoSaidaDto> getErrors() {
+		return fieldErrors;
+	}
+
+	public int getNumberOfErrors() {
+		return this.globalErrorMessages.size() + this.fieldErrors.size();
+	}
 }

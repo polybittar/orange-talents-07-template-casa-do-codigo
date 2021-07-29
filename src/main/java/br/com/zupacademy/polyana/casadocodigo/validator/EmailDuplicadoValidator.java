@@ -19,18 +19,18 @@ public class EmailDuplicadoValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> aClass) {
-        return AutorRequest.class.isAssignableFrom(aClass);
+        return AutorRequest.class.isAssignableFrom(aClass); //verifica se a classe que ta chegando no parametro é a request ou filha
     }
 
     @Override
     public void validate(Object o, Errors errors) {
-        if(errors.hasErrors()){
+        if(errors.hasErrors()){   //verifica os erros de validação já verificados antes pelo spring
             return;
         }
-        AutorRequest autorRequest = (AutorRequest) o;
+        AutorRequest autorRequest = (AutorRequest) o;  //objeto que apresenta o formulario
         Optional<Autor> procuraAutor = autorRepository.findByEmail(autorRequest.getEmail());
         if(procuraAutor.isPresent()){
-            errors.rejectValue("email", null, "Email já cadastrado: "+ autorRequest.getEmail());
+            errors.rejectValue("email", null, "Email já cadastrado: "+ autorRequest.getEmail()); //rejeita o email, errorcode indefinido, e deixa mensagem
         }
     }
 }
