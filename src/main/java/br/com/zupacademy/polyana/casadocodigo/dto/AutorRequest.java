@@ -1,6 +1,8 @@
 package br.com.zupacademy.polyana.casadocodigo.dto;
 
 import br.com.zupacademy.polyana.casadocodigo.domain.Autor;
+import br.com.zupacademy.polyana.casadocodigo.domain.Categoria;
+import br.com.zupacademy.polyana.casadocodigo.validator.UniqueValue;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
@@ -12,6 +14,7 @@ public class AutorRequest {
     private String nome;
     @NotBlank(message = "Email é um campo obrigatório")
     @Email
+    @UniqueValue(domainClass = Autor.class, fieldName = "email")
     private String email;
     @NotBlank(message = "Descrição é um campo obrigatório")
     @Length(max=400)
