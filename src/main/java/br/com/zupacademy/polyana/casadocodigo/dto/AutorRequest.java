@@ -1,7 +1,6 @@
 package br.com.zupacademy.polyana.casadocodigo.dto;
 
 import br.com.zupacademy.polyana.casadocodigo.domain.Autor;
-import br.com.zupacademy.polyana.casadocodigo.domain.Categoria;
 import br.com.zupacademy.polyana.casadocodigo.validator.UniqueValue;
 import org.hibernate.validator.constraints.Length;
 

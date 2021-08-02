@@ -3,20 +3,22 @@ package br.com.zupacademy.polyana.casadocodigo.controller;
 import br.com.zupacademy.polyana.casadocodigo.domain.Categoria;
 import br.com.zupacademy.polyana.casadocodigo.dto.CategoriaRequest;
 import br.com.zupacademy.polyana.casadocodigo.repository.CategoriaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/categorias")
+@RequestMapping("/api/categorias")
 public class CategoriaController {
 
-    @Autowired
+
     private CategoriaRepository categoriaRepository;
+
+    public CategoriaController(CategoriaRepository categoriaRepository) {
+        this.categoriaRepository = categoriaRepository;
+    }
 
     @PostMapping
     @Transactional
