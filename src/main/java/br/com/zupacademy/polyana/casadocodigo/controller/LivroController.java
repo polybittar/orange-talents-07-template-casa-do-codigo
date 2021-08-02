@@ -1,6 +1,7 @@
 package br.com.zupacademy.polyana.casadocodigo.controller;
 
 import br.com.zupacademy.polyana.casadocodigo.domain.Livro;
+import br.com.zupacademy.polyana.casadocodigo.dto.DetalhesLivroResponse;
 import br.com.zupacademy.polyana.casadocodigo.dto.LivroRequest;
 import br.com.zupacademy.polyana.casadocodigo.dto.LivroResponse;
 import br.com.zupacademy.polyana.casadocodigo.repository.AutorRepository;
@@ -41,6 +42,7 @@ public class LivroController {
     }
 
     @GetMapping
+    @Transactional
     public ResponseEntity<List> visualizar() {
         List<LivroResponse> livros = new ArrayList<>();
 
@@ -49,5 +51,15 @@ public class LivroController {
                 }
         );
         return ResponseEntity.ok(livros);
+    }
+
+    @GetMapping("/{id}")
+    @Transactional
+    public ResponseEntity<DetalhesLivroResponse> detalhar(@PathVariable Long id) {
+        Optional<Livro> livro = livroRepository.findById(id);
+        if(livro.isPresent()) {
+            return ResponseEntity.ok(new DetalhesLivroResponse(livro.get()));
+        }
+        return ResponseEntity.notFound().build();
     }
 }
