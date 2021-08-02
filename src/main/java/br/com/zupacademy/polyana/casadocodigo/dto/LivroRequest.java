@@ -3,6 +3,9 @@ package br.com.zupacademy.polyana.casadocodigo.dto;
 import br.com.zupacademy.polyana.casadocodigo.domain.Autor;
 import br.com.zupacademy.polyana.casadocodigo.domain.Categoria;
 import br.com.zupacademy.polyana.casadocodigo.domain.Livro;
+import br.com.zupacademy.polyana.casadocodigo.repository.AutorRepository;
+import br.com.zupacademy.polyana.casadocodigo.repository.CategoriaRepository;
+import br.com.zupacademy.polyana.casadocodigo.repository.LivroRepository;
 import br.com.zupacademy.polyana.casadocodigo.validator.ExistsId;
 import br.com.zupacademy.polyana.casadocodigo.validator.UniqueValue;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -13,6 +16,7 @@ import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.Optional;
 
 public class LivroRequest {
 
@@ -48,11 +52,10 @@ public class LivroRequest {
         this.idAutor = idAutor;
     }
 
-    public Livro converter(EntityManager manager) {
+    public Livro converter(AutorRepository autorRepository, CategoriaRepository categoriaRepository) {
+        Optional<Autor> autor = autorRepository.findById(this.idAutor);
+        Optional<Categoria> categoria = categoriaRepository.findById(this.idCategoria);
 
-        @NotNull Autor autor = manager.find(Autor.class,idAutor);
-        @NotNull Categoria categoria = manager.find(Categoria.class,idCategoria);
-
-        return new Livro(titulo, resumo, sumario, preco, numeroPaginas, isbn, dataPublicacao, categoria, autor);
+        return new Livro(titulo, resumo, sumario, preco, numeroPaginas, isbn, dataPublicacao, categoria.get(), autor.get());
     }
 }

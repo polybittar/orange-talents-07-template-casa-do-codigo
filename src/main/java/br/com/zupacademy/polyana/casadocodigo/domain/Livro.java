@@ -14,6 +14,7 @@ public class Livro {
     private String titulo;
     @NotBlank @Size(max = 500)
     private String resumo;
+    @NotBlank
     private String sumario;
     @NotNull @Min(20)
     private Double preco;
@@ -46,4 +47,11 @@ public class Livro {
         this.autor = autor;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
 }
