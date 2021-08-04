@@ -1,5 +1,6 @@
 package br.com.zupacademy.polyana.casadocodigo.domain;
 
+
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
@@ -33,7 +34,4 @@ public class Estado {
         return nome;
     }
 
-    public Pais getPais() {
-        return pais;
-    }
 }

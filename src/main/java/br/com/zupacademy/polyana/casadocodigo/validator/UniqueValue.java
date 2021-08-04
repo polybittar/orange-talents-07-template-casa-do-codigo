@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 @Constraint(validatedBy = {UniqueValueValidator.class})
 public @interface UniqueValue {
 
-    String message() default "{br.com.zupacademy.casadocodigo.validator.UniqueValue}";
+    String message() default ("O atributo deve ser único");
 
     Class<?>[] groups() default {};
 

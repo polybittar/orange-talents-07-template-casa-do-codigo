@@ -1,6 +1,5 @@
 package br.com.zupacademy.polyana.casadocodigo.dto;
 
-import br.com.zupacademy.polyana.casadocodigo.domain.Livro;
 import br.com.zupacademy.polyana.casadocodigo.domain.Pais;
 import br.com.zupacademy.polyana.casadocodigo.validator.UniqueValue;
 import com.fasterxml.jackson.annotation.JsonCreator;

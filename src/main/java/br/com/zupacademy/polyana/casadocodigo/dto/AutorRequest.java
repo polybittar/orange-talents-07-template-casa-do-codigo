@@ -25,10 +25,6 @@ public class AutorRequest {
         this.descricao = descricao;
     }
 
-    public String getEmail() {
-        return this.email;
-    }
-
     public Autor converter() {
         return new Autor(this.nome, this.email, this.descricao);
     }

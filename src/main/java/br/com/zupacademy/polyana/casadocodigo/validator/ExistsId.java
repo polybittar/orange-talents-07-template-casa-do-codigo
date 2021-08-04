@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 @Constraint(validatedBy = {ExistsIdValidator.class})
 public @interface ExistsId {
 
-    String message() default "{br.com.zupacademy.casadocodigo.validator.ExistsId}";
+    String message() default "O id não está cadastrado";
 
     Class<?>[] groups() default {};
 
